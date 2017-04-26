@@ -55,6 +55,7 @@ RSpec.describe ArticlesController do
     it 'renders a JSON response' do
       article_response =  JSON.parse(response.body)
       p article_response
+      p response
       # setup
 
       # act
@@ -106,9 +107,9 @@ RSpec.describe ArticlesController do
     end
 
     it 'renders a JSON response' do
-      article_response =  JSON.parse(response.body)
-      p article_response
-      expect(article_response).not_to be_nil
+      new_article =  JSON.parse(response.body)
+      p new_article
+      expect(new_article).not_to be_nil
     end
   end
 end
