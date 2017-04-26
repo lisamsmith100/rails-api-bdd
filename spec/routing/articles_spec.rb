@@ -2,6 +2,17 @@
 require 'rails_helper'
 
 RSpec.describe 'routes for articles' do
+  it 'routes GET /articles to the articles#index action' do
+
+    # setup
+
+    # action
+
+    # assert
+
+    # teardown
+
+  end
   skip 'routes GET /articles to the articles#index action' do
   end
 
