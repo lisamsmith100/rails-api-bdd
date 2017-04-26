@@ -38,12 +38,29 @@ RSpec.describe 'Articles API' do
   end
 
   describe 'GET /articles/:id' do
-    skip 'shows one article' do
+    it 'shows one article' do
+      # it 'is successful' do
+      #   expect(response.status).to eq(200)
+      # end
+      #
+      # it 'renders a JSON response' do
+      #   # setup
+      #   article_response = JSON.parse(response.body)
+      #   expect(article_response).not_to be_nil
+      #   # this test is simple--response is not nil
+      #   # expect(article_response.first['title']).to eq(article['title'])
+      #   # expects {} octet
+      # end
     end
   end
 
   describe 'DELETE /articles/:id' do
-    skip 'deletes an article' do
+    it 'deletes an article' do
+      delete "/articles/#{article.id}"
+
+      expect(response).to be_success
+      expect(response.body).to be_empty
+      expect(article).to be_nil
     end
   end
 
@@ -52,7 +69,11 @@ RSpec.describe 'Articles API' do
       { title: 'Two Stupid Tricks' }
     end
 
-    skip 'updates an article' do
+    it 'updates an article' do
+      patch "/articles/#{article.id}", params: { article: article_diff }
+      expect(response).to be_success
+      expect(response.body).to be_empty
+      expect(article[:title]).to eq(article_diff[:title])
     end
   end
 

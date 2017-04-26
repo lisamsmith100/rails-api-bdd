@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'routes for articles' do
@@ -9,13 +10,20 @@ RSpec.describe 'routes for articles' do
     expect(get('/articles/1')).to route_to(
       controller: 'articles',
       action: 'show',
-      id: '1')
+      id: '1'
+      )
   end
   #
   # skip 'routes GET /articles/:id to the articles#show action' do
   # end
 
-  skip 'routes DELETE /articles/:id to the articles#destroy action' do
+  # purpose is not to determine if it's deleted, just to determ if route exists
+  it 'routes DELETE /articles/:id to the articles#destroy action' do
+    expect(delete('/articles/1')).to route_to(
+      controller: 'articles',
+      action: 'destroy',
+      id: '1'
+      )
   end
 
   skip 'routes PATCH /articles/:id to the articles#update action' do

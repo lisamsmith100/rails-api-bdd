@@ -2,7 +2,7 @@
 Rails.application.routes.draw do
   # get 'articles' => 'articles#index'
   # get '/articles' => 'articles#show'
-  resources :articles, only: [:index, :show]
+  resources :articles, only: [:index, :show, :destroy]
   resources :examples, except: [:new, :edit]
   post '/sign-up' => 'users#signup'
   post '/sign-in' => 'users#signin'

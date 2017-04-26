@@ -14,6 +14,11 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
+    # JSON.parse({:name => "Danny"})
+    @article.destroy
+    head :no_content
+    # this will modify the header response so if someone is accessing the api,
+    # they can read no_content
   end
 
   def update
