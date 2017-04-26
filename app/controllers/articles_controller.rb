@@ -3,6 +3,11 @@
 class ArticlesController < ApplicationController
   before_filter :set_article, only: [:show, :update, :destroy]
 
+  def index
+    # JSON.parse({:name => "Danny"})
+    render json: Article.all
+  end
+
   def show
   end
 

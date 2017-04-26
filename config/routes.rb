@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 Rails.application.routes.draw do
-  get 'articles' => 'articles#index'
+  # get 'articles' => 'articles#index'
+  # get '/articles' => 'articles#show'
+  resources :articles, only: [:index, :show]
   resources :examples, except: [:new, :edit]
   post '/sign-up' => 'users#signup'
   post '/sign-in' => 'users#signin'
