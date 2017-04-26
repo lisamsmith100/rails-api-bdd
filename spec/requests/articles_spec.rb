@@ -75,7 +75,11 @@ RSpec.describe 'Articles API' do
   end
 
   describe 'POST /articles' do
-    skip 'creates an article' do
+    it 'creates an article' do
+      post '/articles', params: { article: article_params}
+
+      expect(response).to be_success
+
     end
   end
 end

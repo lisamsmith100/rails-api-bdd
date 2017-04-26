@@ -26,7 +26,14 @@ class ArticlesController < ApplicationController
   end
 
   def create
-  end
+    @article = Article.new(article_params)
+
+   if @article.save
+     render json: @article, status: :created, location: @article
+   else
+     render json: @article.errors, status: :unprocessable_entity
+   end
+ end
 
   private
 
