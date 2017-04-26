@@ -11,9 +11,9 @@ RSpec.describe 'routes for articles' do
       action: 'show',
       id: '1')
   end
-
-  skip 'routes GET /articles/:id to the articles#show action' do
-  end
+  #
+  # skip 'routes GET /articles/:id to the articles#show action' do
+  # end
 
   skip 'routes DELETE /articles/:id to the articles#destroy action' do
   end

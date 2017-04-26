@@ -9,6 +9,8 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    # JSON.parse({:name => "Danny"})
+    render json: @article
   end
 
   def destroy

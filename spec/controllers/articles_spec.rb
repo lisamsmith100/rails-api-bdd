@@ -46,10 +46,19 @@ RSpec.describe ArticlesController do
   end
 
   describe 'GET show' do
-    skip 'is successful' do
+    it 'is successful' do
+      expect(response).to be_success
     end
 
-    skip 'renders a JSON response' do
+    it 'renders a JSON response' do
+      # setup
+      article_single = JSON.parse(response.body)
+      # action
+
+      # assert
+      expect(article_single).not_to be_nil
+      expect(article_single.first['title']).to eq(article['title'])
+      # teardown
     end
   end
 
