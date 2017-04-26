@@ -4,24 +4,25 @@ class ArticlesController < ApplicationController
   before_filter :set_article, only: [:show, :update, :destroy]
 
   def index
-    # JSON.parse({:name => "Danny"})
     render json: Article.all
   end
 
   def show
-    # JSON.parse({:name => "Danny"})
     render json: @article
   end
 
   def destroy
-    # JSON.parse({:name => "Danny"})
     @article.destroy
+
     head :no_content
-    # this will modify the header response so if someone is accessing the api,
-    # they can read no_content
   end
 
   def update
+    if @article.update(article_params)
+      head :no_content
+    else
+      render json: @article.errors, status: unprocessable_entity
+    end
   end
 
   def create

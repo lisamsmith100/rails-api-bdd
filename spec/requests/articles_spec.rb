@@ -38,19 +38,14 @@ RSpec.describe 'Articles API' do
   end
 
   describe 'GET /articles/:id' do
-    it 'shows one article' do
-      # it 'is successful' do
-      #   expect(response.status).to eq(200)
-      # end
-      #
-      # it 'renders a JSON response' do
-      #   # setup
-      #   article_response = JSON.parse(response.body)
-      #   expect(article_response).not_to be_nil
-      #   # this test is simple--response is not nil
-      #   # expect(article_response.first['title']).to eq(article['title'])
-      #   # expects {} octet
-      # end
+    it'shows one article' do
+      get "/articles/#{article.id}"
+
+      expect(response).to be_success
+
+      article_response = JSON.parse(response.body)
+      expect(article_response['id']).not_to be_nil
+      expect(article_response['title']).to eq(article_params[:title])
     end
   end
 
@@ -70,7 +65,9 @@ RSpec.describe 'Articles API' do
     end
 
     it 'updates an article' do
+    #  patch "/articles/#{article.id}", params: { article: {title: '9 Strange Tricks'}}
       patch "/articles/#{article.id}", params: { article: article_diff }
+
       expect(response).to be_success
       expect(response.body).to be_empty
       expect(article[:title]).to eq(article_diff[:title])
