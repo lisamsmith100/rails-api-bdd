@@ -9,6 +9,7 @@ RSpec.describe 'routes for articles' do
     # action
 
     # assert
+    expect(get('/articles')).to route_to('articles#index')
 
     # teardown
 
